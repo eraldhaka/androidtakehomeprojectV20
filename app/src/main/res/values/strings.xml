@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">android-take-home-project-V2.0</string>
+    <string name="discover">Discover</string>
+    <string name="detail">Detail</string>
+    <string name="name">name</string>
+    <string name="description">description</string>
+    <string name="status">status</string>
+    <string name="average_rating">Average Rating %s</string>
+</resources>
