@@ -13,6 +13,9 @@ import org.android_take_home_project_v20.data.model.restaurant_data.DataModel;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static org.android_take_home_project_v20.data.data.SaveData.getModel;
+import static org.android_take_home_project_v20.data.data.SaveData.setDataModel;
 import static org.android_take_home_project_v20.utils.Utils.loadImage;
 
 /**
@@ -48,7 +51,27 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         holder.txtName.setText(item.getName());
         holder.txtDescription.setText(item.getDescription());
         holder.txtStatus.setText(item.getStatus());
+
+
+        if(getModel(item.getId())){
+            holder.imgFavourite.setImageResource(android.R.drawable.star_big_on);
+        }else {
+            holder.imgFavourite.setImageResource(android.R.drawable.star_big_off);
+        }
+
+        holder.imgFavourite.setOnClickListener(view -> {
+            if(getModel(item.getId())){
+                holder.imgFavourite.setImageResource(android.R.drawable.star_big_off);
+                item.setFavourite(false);
+            }else {
+                holder.imgFavourite.setImageResource(android.R.drawable.star_big_on);
+                item.setFavourite(true);
+            }
+            setDataModel(item);
+            notifyDataSetChanged();
+        });
     }
+
 
     @Override
     public int getItemCount() {
@@ -60,6 +83,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         ConstraintLayout constraintLayout;
         @BindView(R.id.imageView_logo)
         ImageView imgLogo;
+        @BindView(R.id.imageView_favorite)
+        ImageView imgFavourite;
         @BindView(R.id.textView_name)
         TextView txtName;
         @BindView(R.id.textView_description)

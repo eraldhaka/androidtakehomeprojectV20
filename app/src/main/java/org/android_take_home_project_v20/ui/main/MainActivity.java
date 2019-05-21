@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 import org.android_take_home_project_v20.R;
+import org.android_take_home_project_v20.data.data.SaveData;
 import org.android_take_home_project_v20.data.model.restaurant_data.DataModel;
 import org.android_take_home_project_v20.ui.detail.DetailActivity;
 import java.util.List;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         ButterKnife.bind(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         presenter = new MainPresenter(this, new MainListItemsInteractor());
+        SaveData.initSharedPref(this);
     }
 
     @Override

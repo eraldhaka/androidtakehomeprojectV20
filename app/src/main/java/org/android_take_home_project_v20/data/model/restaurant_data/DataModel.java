@@ -25,6 +25,8 @@ public class DataModel {
     @SerializedName("delivery_fee")
     private Integer deliveryFee;
 
+    private boolean favourite;
+
 
     public DataModel(Integer id, String name, String description, String coverImageUrl, String status, Integer deliveryFee) {
         this.id = id;
@@ -59,4 +61,11 @@ public class DataModel {
         return deliveryFee;
     }
 
+    public boolean isFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        this.favourite = favourite;
+    }
 }
